@@ -5,7 +5,7 @@
     <p class="v-catalog-item__price">Price: {{ productData.price }}$</p>
     <button 
       class="v-catalog-item__add_to_cart_btn btn"
-      @click="sendDataToParent"
+      @click="addToCart"
     >
       Add To Card
     </button>
@@ -29,10 +29,10 @@
       }
     },
     methods: {
-      sendDataToParent() {
-        this.$emit('sendArticle', this.productData.article )
+      addToCart() {
+        this.$emit('addToCart', this.productData)
       }
-    }
+    },
   }
 </script>
 
@@ -49,6 +49,12 @@ $radius: 4px;
   margin-bottom: $margin*2;
   .img {
     max-width: 250px;
+    transition: all .5s;
+    filter: grayscale(60%); 
+    &:hover {
+      scale: 1.05;
+      filter: grayscale(0%);
+    }
   }
   .btn {
     padding: 10px;
